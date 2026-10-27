@@ -1,6 +1,9 @@
-package models;
+package com.victor.project.models;
+
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -14,9 +17,11 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Table(name = "Customer" )
 public class Customer {
@@ -38,7 +43,10 @@ public class Customer {
 	
 	@Pattern(regexp="\\(\\d{3}\\)\\d{3}-\\d{4}")
 	String phoneNumber;
+
+	@Embedded
+	private Address address;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "customer")
-	private Pet dog;
+	private Set<Pet> pets;
 }
