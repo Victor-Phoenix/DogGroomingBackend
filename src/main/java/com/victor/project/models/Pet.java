@@ -7,9 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,13 +33,13 @@ public class Pet {
 	@Past
 	private LocalDate dateOfBirth;
 	
-	@Future
+	@NotNull
 	private LocalDate rabiesVacExperation;
 	
 	
 	private Integer Weight;
 	
 	// TODO: Add Breed object 
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	private Customer customer;
 }

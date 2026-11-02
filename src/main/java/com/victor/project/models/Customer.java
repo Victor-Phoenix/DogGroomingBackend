@@ -1,5 +1,6 @@
 package com.victor.project.models;
 
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -17,13 +18,15 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "Customer" )
+@Table(name = "customer" )
 public class Customer {
 
 	@Id
@@ -41,12 +44,23 @@ public class Customer {
 	@Email
 	private String email;
 	
-	@Pattern(regexp="\\(\\d{3}\\)\\d{3}-\\d{4}")
+	@Pattern(regexp="\\d{10}")
 	String phoneNumber;
 
 	@Embedded
 	private Address address;
 	
+//	TODO Remove ToString to see what happens
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "customer")
 	private Set<Pet> pets;
+	
+	
+//	TODO Remove ToString to see what happens
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	//By default OneToMany fetch is set to LAZY 
+	@OneToMany(mappedBy = "customer" )
+	private List<Appointment> appointment;
 }
