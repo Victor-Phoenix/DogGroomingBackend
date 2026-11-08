@@ -26,11 +26,12 @@ public class Groomer {
 	private String firstName;
 	@NotBlank
 	private String lastName;
-	@Pattern(regexp = "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$" )
+	@Pattern(regexp = "\\d{10}" )
 	private String phoneNumber;
+	
 	
 	
 	private LocalDate hireDate;
 	
-//	private LocalDateTime 
+	// Add GroomerEnum as a property 
 }

@@ -37,9 +37,11 @@ public class Pet {
 	private LocalDate rabiesVacExperation;
 	
 	
-	private Integer Weight;
+	private Integer weight;
 	
 	// TODO: Add Breed object 
 	@ManyToOne(optional = false)
 	private Customer customer;
+	
+	
 }
