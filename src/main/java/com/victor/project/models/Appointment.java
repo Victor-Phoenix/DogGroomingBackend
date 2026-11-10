@@ -41,4 +41,6 @@ public class Appointment {
  */
 	@NotNull
 	private LocalDateTime localDateTime;
+
+//	TODO Create enum for current state of appointment. Booked, confirmed, in-service, canceled, reffed out
 }
