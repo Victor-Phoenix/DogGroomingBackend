@@ -2,6 +2,8 @@ package com.victor.project.models;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,6 +43,7 @@ public class Pet {
 	
 	// TODO: Add Breed object 
 	@ManyToOne(optional = false)
+	@JsonBackReference
 	private Customer customer;
 	
 	
