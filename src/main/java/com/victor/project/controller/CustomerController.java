@@ -21,5 +21,9 @@ public class CustomerController {
 	public List<Customer> getAllCustomer() {
 		return customerService.findAllCustomer();
 	}
+	@GetMapping("/getByPhoneNumber")
+	public List<Customer> getByPhoneNumber(String phoneNumber){
+		return customerService.findByPhoneNumber(phoneNumber);
+	}
 	
 }

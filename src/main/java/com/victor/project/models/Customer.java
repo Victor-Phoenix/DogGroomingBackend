@@ -3,7 +3,10 @@ package com.victor.project.models;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -45,6 +48,7 @@ public class Customer {
 	private String email;
 	
 	@Pattern(regexp="\\d{10}")
+	@Column(unique = true)
 	String phoneNumber;
 
 	@Embedded
