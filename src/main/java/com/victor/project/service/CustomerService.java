@@ -22,23 +22,23 @@ public class CustomerService {
 		
 	}
 	
-	public List<Customer> findAllCustomer(){
-		
+	public List<Customer> findAllCustomer(){	
 		return customerRepository.findAll();
 	}
 	
+	
 	public Customer saveCustomer(Customer customer) {
 
-		if( customerRepository.findByPhoneNumber(customer.getPhoneNumber()) != null) {
+		if( customerRepository.findByEmail(customer.getEmail()) != null) {
 			throw new CustomerException("Duplciate found");
 		}else {
 			return customerRepository.save(customer);
 		}
-		
 	}
-	public List<Customer> findByPhoneNumber(String phoneNumber) {
-		List<Customer>test = customerRepository.findDistinctByPhoneNumber(phoneNumber);
-		test.size();
+	
+	public Boolean findByEmail(String email) {
+		Boolean result = customerRepository.findByEmail(email);
+		return result;
 		
 		
 	}

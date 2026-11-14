@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.victor.project.models.Customer;
@@ -21,9 +22,9 @@ public class CustomerController {
 	public List<Customer> getAllCustomer() {
 		return customerService.findAllCustomer();
 	}
-	@GetMapping("/getByPhoneNumber")
-	public List<Customer> getByPhoneNumber(String phoneNumber){
-		return customerService.findByPhoneNumber(phoneNumber);
+	@GetMapping("/getByEmail")
+	public Boolean getByEmail(@RequestParam String email){
+		return customerService.findByEmail(email);
 	}
 	
 }

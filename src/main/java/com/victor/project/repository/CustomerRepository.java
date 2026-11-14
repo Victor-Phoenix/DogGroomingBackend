@@ -9,6 +9,6 @@ import com.victor.project.models.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
 	public List<Customer>findDistinctByPhoneNumber(String phoneNumber);
-	public Boolean findByPhoneNumber(String phoneNumber);
+	public Boolean findByEmail(String Email);
 	
 }
