@@ -29,7 +29,7 @@ public class CustomerService {
 	
 	public Customer saveCustomer(Customer customer) {
 
-		if( customerRepository.findByEmail(customer.getEmail()) != null) {
+		if( customerRepository.existsByEmail(customer.getEmail()) == true) {
 			throw new CustomerException("Duplciate found");
 		}else {
 			return customerRepository.save(customer);
@@ -37,7 +37,7 @@ public class CustomerService {
 	}
 	
 	public Boolean findByEmail(String email) {
-		Boolean result = customerRepository.findByEmail(email);
+		Boolean result = customerRepository.existsByEmail(email);
 		return result;
 		
 		
