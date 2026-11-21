@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,10 @@ public class Appointment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull
+//	TODO Create enum for current state of appointment. Booked, confirmed, in-service, canceled, reffed out
+	private AppointmentEnum appointmentStatus;
+	
 	@ManyToOne
 	private Groomer groomer;
 	
@@ -35,8 +40,8 @@ public class Appointment {
 	@ManyToOne
 	private Pet pet;
 	
-	@ManyToOne
-	private GroomingPackage groomingPackage;
+	@OneToMany
+	private AppointmentLineItem appointmentLineItem;
 	
 /*
  * TODO: Create own validation to make sure it is a valid Date. 
@@ -45,5 +50,4 @@ public class Appointment {
 	@NotNull
 	private LocalDateTime localDateTime;
 
-//	TODO Create enum for current state of appointment. Booked, confirmed, in-service, canceled, reffed out
 }
