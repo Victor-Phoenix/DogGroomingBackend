@@ -1,11 +1,13 @@
 package com.victor.project.models;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -29,9 +31,16 @@ public class Groomer {
 	@Pattern(regexp = "\\d{10}" )
 	private String phoneNumber;
 	
-	
+//	Used to check if employee is still employeed, by default, should be set to true.
+	private Boolean status;
 	
 	private LocalDate hireDate;
 	
-	// Add GroomerEnum as a property 
+	@OneToMany
+	private Set<DailyShiftLog> dailyShiftLog;
+	
+	@OneToMany
+	private Set<WeeklyAvailability> weeklyAvailability;
+	
+
 }
