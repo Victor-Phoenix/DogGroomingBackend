@@ -1,9 +1,12 @@
 package com.victor.project.config;
 
 import java.math.BigDecimal;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.TextStyle;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +18,12 @@ import com.victor.project.models.Customer;
 import com.victor.project.models.Groomer;
 import com.victor.project.models.GroomingPackage;
 import com.victor.project.models.Pet;
-import com.victor.project.repository.*;
+import com.victor.project.models.WeeklyAvailability;
+import com.victor.project.repository.AppointmentRepository;
+import com.victor.project.repository.CustomerRepository;
+import com.victor.project.repository.GroomerRepository;
+import com.victor.project.repository.GroomingPackageRepository;
+import com.victor.project.repository.PetRepository;
 
 @Component
 public class DataSeeder implements CommandLineRunner {
@@ -40,6 +48,20 @@ public class DataSeeder implements CommandLineRunner {
 		Long custSize= customerRepository.count();
 		if (custSize <= 0) {
 
+			
+			WeeklyAvailability weekly = new WeeklyAvailability();
+	
+			Set<WeeklyAvailability> bundle = new HashSet<WeeklyAvailability>();
+			for(int i = 1; i <= 7; i++) {
+				DayOfWeek test = DayOfWeek.of(i);
+				weekly.setDayOfWeek(test);
+				weekly.setStartTime(null);
+				
+			}
+			
+			
+			
+			
 			Address firstAddy = new Address("Candy", "Lane", "CandyCity", "CandyKingdom");
 
 			// Create demo pet 
@@ -79,25 +101,26 @@ public class DataSeeder implements CommandLineRunner {
 			firstAppointment.setCustomer(firstCustomer);
 			firstAppointment.setGroomer(firstGroomer);
 			firstAppointment.setPet(firstPet);
-			firstAppointment.setGroomingPackage(firstPackage);
+//			firstAppointment.setGroomingPackage(firstPackage);
 			firstAppointment.setLocalDateTime(LocalDateTime.now());
 			
 			Appointment secondAppointment = new Appointment();
 			secondAppointment.setCustomer(firstCustomer);
 			secondAppointment.setGroomer(firstGroomer);
 			secondAppointment.setPet(firstPet);
-			secondAppointment.setGroomingPackage(secondPackage);
+//			secondAppointment.setGroomingPackage(secondPackage);
 			secondAppointment.setLocalDateTime(LocalDateTime.now());
 			
 			firstCustomer.setPets(petSet);
 			firstPet.setCustomer(firstCustomer);
 			
-			customerRepository.save(firstCustomer);
-			groomerRepository.save(firstGroomer);
-			groomingPackageRepository.save(firstPackage);
-			groomingPackageRepository.save(secondPackage);
-			appointmentRepository.save(firstAppointment);
-			appointmentRepository.save(secondAppointment);
+//			customerRepository.save(firstCustomer);
+//			groomerRepository.save(firstGroomer);
+//			groomingPackageRepository.save(firstPackage);
+//			groomingPackageRepository.save(secondPackage);
+//			appointmentRepository.save(firstAppointment);
+//			appointmentRepository.save(secondAppointment);
+			
 		}
 
 	}

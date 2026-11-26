@@ -3,6 +3,7 @@ package com.victor.project.models;
 import java.time.LocalDate;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,7 +40,7 @@ public class Groomer {
 	@OneToMany
 	private Set<DailyShiftLog> dailyShiftLog;
 	
-	@OneToMany
+	@OneToMany(cascade =CascadeType.ALL, mappedBy = "groomer")
 	private Set<WeeklyAvailability> weeklyAvailability;
 	
 

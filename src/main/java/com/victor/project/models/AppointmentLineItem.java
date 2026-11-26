@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +21,7 @@ public class AppointmentLineItem {
 	@Id
 	private Long id;
 	
-	@ManyToOne
-	Set<GroomingPackage> groomingPackage;
+	@OneToMany
+	private Set<GroomingPackage> groomingPackage;
 	
 }

@@ -1,6 +1,7 @@
 package com.victor.project.models;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -41,7 +42,7 @@ public class Appointment {
 	private Pet pet;
 	
 	@OneToMany
-	private AppointmentLineItem appointmentLineItem;
+	private Set<AppointmentLineItem> appointmentLineItem;
 	
 /*
  * TODO: Create own validation to make sure it is a valid Date. 
